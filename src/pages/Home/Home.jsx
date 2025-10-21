@@ -1,9 +1,10 @@
 import React from 'react'
+import Caurosel from '../../Components/Caurosel/Caurosel'
 
 const Home = () => {
   return (
     <div>
-      <p>Home</p>
+      <Caurosel></Caurosel>
     </div>
   )
 }
