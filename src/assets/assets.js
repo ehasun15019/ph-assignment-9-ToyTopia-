@@ -7,6 +7,11 @@ import footer from "./Footer.png"
 import banner1 from "./banner1.png"
 import banner2 from "./banner2.png"
 import reviewCard from "./reviewCard.png"
+import r1 from './r1.png'
+import r2 from './r2.png'
+import r3 from './r3.png'
+import r4 from './r4.png'
+
 
 // find product section 
 import f1 from "./f1.png"
@@ -30,7 +35,8 @@ export const assets = {
     footer,
     s1,s2, s3,s4,
     banner1, banner2,
-    reviewCard
+    reviewCard,
+    r1, r2, r3, r4
 }
 
 export const findToys = [
