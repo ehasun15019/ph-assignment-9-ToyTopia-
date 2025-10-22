@@ -5,6 +5,7 @@ import HomeCard from "../../Components/HomeCard/HomeCard";
 import HomeBanner from "../../Components/HomeBanner/HomeBanner";
 import Review from "../../Components/Review/Review";
 import RecentPhoto from "../../Components/RecentPhoto/RecentPhoto";
+import Delivery from "../../Components/DeliveryDetails/Delivery";
 
 const Home = () => {
   return (
@@ -17,6 +18,7 @@ const Home = () => {
         <HomeBanner></HomeBanner>
         <Review></Review>
         <RecentPhoto></RecentPhoto>
+        <Delivery></Delivery>
       </div>
     </div>
   );

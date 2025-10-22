@@ -11,6 +11,9 @@ import r1 from './r1.png'
 import r2 from './r2.png'
 import r3 from './r3.png'
 import r4 from './r4.png'
+import watch from "./watch.png"
+import truck from "./truck.png"
+import returns from "./return.png"
 
 
 // find product section 
@@ -36,7 +39,8 @@ export const assets = {
     s1,s2, s3,s4,
     banner1, banner2,
     reviewCard,
-    r1, r2, r3, r4
+    r1, r2, r3, r4,
+    watch, truck, returns
 }
 
 export const findToys = [
