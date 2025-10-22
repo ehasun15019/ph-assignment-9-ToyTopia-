@@ -1,6 +1,8 @@
 import { RiMenu2Line } from "react-icons/ri";
 import { assets } from "../../assets/assets";
 import { Link, NavLink } from "react-router";
+import { use } from "react";
+import { AuthContext } from "../../Context/AuthContext";
 
 const navLink = (
   <>
@@ -20,6 +22,9 @@ const navLink = (
 );
 
 const Navbar = () => {
+
+  const {user} = use(AuthContext);
+
   return (
     <div className="navbar mt-10 px-3 md:px-8 lg:px-10">
       <div className="navbar-start">
@@ -31,7 +36,18 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{navLink}</ul>
       </div>
       <div className="navbar-end ">
-        <Link to="/auth/login" className="btn bg-[#0F83B2] text-white rounded-full px-6">Login</Link>
+        <div className="pe-3">
+          {
+            user && <img src={user.photoURL} alt="user image" className="w-10 rounded-full" />
+          }
+        </div>
+
+        {
+          user ? 
+          <Link to="/auth/login" className="btn bg-[#0F83B2] text-white rounded-full px-6">Log Out</Link>
+          :
+          <Link to="/auth/login" className="btn bg-[#0F83B2] text-white rounded-full px-6">Login</Link>
+        }
 
         {/* mobile dropdown */}
         <div className="dropdown relative">

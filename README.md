@@ -1,4 +1,3 @@
-1. Home
 2. Toy Details Page  -> Protected
 3. Login Page -> Public
 4. Register Page -> Public
