@@ -25,3 +25,14 @@ ph-docs
 https://docs.google.com/document/d/1RBoF66ZZ7AjIjEsi6drC2cf9uC2yNTc85c0Shf1agho/edit?tab=t.0
 
 
+
+
+Register from creation } -> age korte hobe 
+login from creation } -> age korte hobe
+
+1. Home page ar card tar show details page ar sate firebase auth complete korte hobe (private)
+2. data ar description ta boro korte hobe...
+3. page Details (private) .... 
+
+
+

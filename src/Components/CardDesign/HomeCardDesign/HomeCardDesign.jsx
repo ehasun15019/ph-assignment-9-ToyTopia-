@@ -14,7 +14,7 @@ const HomeCardDesign = ({
 
   return (
     <div>
-      <div className="card w-80 shadow-sm h-[350px] bg-gray-200">
+      <div className="card w-80 shadow-sm h-[350px] bg-gray-100">
         <figure className="py-5">
           <img
             src={pictureURL}
@@ -30,12 +30,13 @@ const HomeCardDesign = ({
             <span>available: {availableQuantity} peace</span>
           </div>
 
-          <div className="">
+          <div className="pt-3">
             <p>{shortDescription}</p>
           </div>
 
-          <div className="card-actions justify-end">
-            <p><IoIosStar /> {rating}</p>
+          <div className="flex flex-col items-end justify-end">
+            <p><IoIosStar style={{color: "gold"}} /></p>
+            <p className="text-end">{rating}</p>
           </div>
         </div>
       </div>

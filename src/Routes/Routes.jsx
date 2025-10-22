@@ -11,9 +11,6 @@ export const routes = createBrowserRouter(
                 {
                     path: "/",
                     element: <Home></Home>,
-                    loader: () => {
-                        return fetch("/toysData.json")
-                    }
                 }
             ]
         }
