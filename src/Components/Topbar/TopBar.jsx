@@ -12,8 +12,8 @@ const TopBar = () => {
       </div>
 
       <div className='flex gap-5 py-4 md:py-0'>
-        <Link>Login</Link>
-        <Link>Register</Link>
+        <Link to="/auth/login">Login</Link>
+        <Link to="/auth/register">Register</Link>
       </div>
     </div>
   )

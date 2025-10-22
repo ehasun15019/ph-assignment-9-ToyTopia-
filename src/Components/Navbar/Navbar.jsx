@@ -31,8 +31,9 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{navLink}</ul>
       </div>
       <div className="navbar-end ">
-        <a className="btn bg-[#0F83B2] text-white rounded-full px-6">Login</a>
+        <Link to="/auth/login" className="btn bg-[#0F83B2] text-white rounded-full px-6">Login</Link>
 
+        {/* mobile dropdown */}
         <div className="dropdown relative">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <RiMenu2Line />
