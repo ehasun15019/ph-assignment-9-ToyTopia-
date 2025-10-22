@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import HomeCardDesign from "../CardDesign/HomeCardDesign/HomeCardDesign";
 import Title from "../Title/Title";
-import { Link } from "react-router";
+import { Link, useParams } from "react-router";
 
 const HomeCard = () => {
   const [newsData, setNewsData] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const {id} = useParams();
 
   useEffect(() => {
     fetch("/toysData.json")
@@ -33,7 +35,7 @@ const HomeCard = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-items-center gap-6 sm:gap-8 lg:gap-10 mt-10">
         {newsData.slice(0, 6).map((item) => (
-          <Link key={item.id}>
+          <Link key={item.id} to={`/product/productDetails/${item.toyId}`}>
             <HomeCardDesign
               pictureURL={item.pictureURL}
               toyName={item.toyName}
