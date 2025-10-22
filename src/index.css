@@ -4,6 +4,12 @@
     themes: light --default
 }
 
+/* swiper css import */
+/* @import "swiper/css";
+@import "swiper/css/navigation";
+@import "swiper/css/pagination"; */
+
+
 body 
 {
     font-family: "Nunito", sans-serif;

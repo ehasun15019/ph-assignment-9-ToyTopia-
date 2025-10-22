@@ -6,6 +6,7 @@ import slider3 from "./Slider3.jpg"
 import footer from "./Footer.png"
 import banner1 from "./banner1.png"
 import banner2 from "./banner2.png"
+import reviewCard from "./reviewCard.png"
 
 // find product section 
 import f1 from "./f1.png"
@@ -28,7 +29,8 @@ export const assets = {
     f1,f2,f3,f4,f5,
     footer,
     s1,s2, s3,s4,
-    banner1, banner2
+    banner1, banner2,
+    reviewCard
 }
 
 export const findToys = [

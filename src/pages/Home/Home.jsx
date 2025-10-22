@@ -3,6 +3,7 @@ import Caurosel from '../../Components/Caurosel/Caurosel'
 import FindToys from '../../Components/FindToys/FindToys'
 import HomeCard from '../../Components/HomeCard/HomeCard'
 import HomeBanner from '../../Components/HomeBanner/HomeBanner'
+import Review from '../../Components/Review/Review'
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
       <FindToys></FindToys>
       <HomeCard></HomeCard>
       <HomeBanner></HomeBanner>
+      <Review></Review>
     </div>
   )
 }
