@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-import ProductDetailsCardDesign from "../../Components/CardDesign/ProductDetailsCardDesign.jsx/ProductDetailsCardDesign";
 import { useParams } from "react-router";
+import ProductRightCardDesign from "../CardDesign/ProductDetailsCardDesign.jsx/ProductRightCardDesign";
 
-const ProductDetails = () => {
+const ProductDetailsRightSide = () => {
   const [productDetails, setProductDetails] = useState(null);
-
   const { id } = useParams();
 
   useEffect(() => {
@@ -21,11 +20,6 @@ const ProductDetails = () => {
       });
   }, [id]);
 
-
-  useEffect(() => {
-    window.scroll(0, 0)
-  }, [])
-
   if (!productDetails) {
     return (
       <div className="flex justify-center items-center min-h-[400px]">
@@ -36,18 +30,16 @@ const ProductDetails = () => {
 
   return (
     <div>
-      <section className="details_section">
-        <ProductDetailsCardDesign
-          key={productDetails.toyId}
-          pictureURL={productDetails.pictureURL}
-          toyName={productDetails.toyName}
-          sellerName={productDetails.sellerName}
-          sellerEmail={productDetails.sellerEmail}
-          description={productDetails.description}
-        />
-      </section>
+      <ProductRightCardDesign 
+        key={productDetails.toyId}
+        toyName={productDetails.toyName}
+        price={productDetails.price}
+        rating={productDetails.rating}
+        availableQuantity={productDetails.availableQuantity}
+        subCategory={productDetails.subCategory}
+      />
     </div>
   );
 };
 
-export default ProductDetails;
+export default ProductDetailsRightSide;
