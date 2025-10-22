@@ -6,6 +6,7 @@ import HomeBanner from "../../Components/HomeBanner/HomeBanner";
 import Review from "../../Components/Review/Review";
 import RecentPhoto from "../../Components/RecentPhoto/RecentPhoto";
 import Delivery from "../../Components/DeliveryDetails/Delivery";
+import NewsLetter from "../../Components/NewsLetter/NewsLetter";
 
 const Home = () => {
   return (
@@ -19,6 +20,7 @@ const Home = () => {
         <Review></Review>
         <RecentPhoto></RecentPhoto>
         <Delivery></Delivery>
+        <NewsLetter></NewsLetter>
       </div>
     </div>
   );
