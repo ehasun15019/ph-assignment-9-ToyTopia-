@@ -1,5 +1,5 @@
 import React, { use, useState } from "react";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../Context/AuthContext";
 import { IoEye } from "react-icons/io5";
 import { ImEyeBlocked } from "react-icons/im";
@@ -15,6 +15,11 @@ const Register = () => {
   const [nameError, setNameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const RegexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_\-+=\[{\]};:'",<.>/?\\|`~]).{6,}$/;
+
+  // redirects
+  const navigate = useNavigate();
+  const location = useLocation();
+  const redirects = location.state?.from?.pathname || "/";
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
@@ -39,27 +44,28 @@ const Register = () => {
       setPasswordError("");
     }
 
-   createUser(email, password)
-  .then((newUser) => {
-    const user = newUser.user;
-    const name = e.target.name.value;
-    const photoURL = e.target.photo.value;
+    createUser(email, password)
+      .then((newUser) => {
+        const user = newUser.user;
+        const name = e.target.name.value;
+        const photoURL = e.target.photo.value;
 
-    updateProfile(user, {
-      displayName: name,
-      photoURL: photoURL,
-    })
-      .then(() => {
-        console.log("Profile updated!");
+        updateProfile(user, {
+          displayName: name,
+          photoURL: photoURL,
+        })
+          .then(() => {
+            console.log("Profile updated!");
+          })
+          .catch((error) => console.log(error));
+
+        e.target.reset();
+        toast.success("You are successfully registered");
+        navigate(redirects, {replace: true})
       })
-      .catch((error) => console.log(error));
-
-    e.target.reset();
-    toast.success("You are successfully registered");
-  })
-  .catch((error) => {
-    toast.error(error.massage)
-  });
+      .catch((error) => {
+        toast.error(error.massage);
+      });
   };
 
   /* Sign in with Google */
@@ -69,6 +75,7 @@ const Register = () => {
     signInWithGoogle(provider)
       .then((newUser) => {
         console.log(newUser.user);
+        navigate(redirects, {replace: true})
       })
       .catch((error) => console.log(error.message));
   };

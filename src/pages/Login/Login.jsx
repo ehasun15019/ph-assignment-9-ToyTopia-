@@ -1,7 +1,7 @@
 import { GoogleAuthProvider } from "firebase/auth";
 import React, { use, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../Context/AuthContext";
 import { IoEye } from "react-icons/io5";
@@ -11,6 +11,11 @@ const Login = () => {
   const { signInWithGoogle, loginFunction } = use(AuthContext);
   const [errorHandling, setErrorHandling] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+
+  // // redirects
+  const navigate = useNavigate();
+  const location = useLocation();
+  const redirects = location.state?.from?.pathname || "/";
 
   /* login with email and password functionality start */
   const handleLogin = (e) => {
@@ -22,6 +27,7 @@ const Login = () => {
       .then((getUser) => {
         const users = getUser.user;
         toast.success("Login successfully");
+        navigate(redirects, {replace: true})
       })
       .catch((error) => {
         const errors = error.message;
@@ -38,6 +44,7 @@ const Login = () => {
     signInWithGoogle(provider)
       .then((newUser) => {
         toast.success("Login successfully");
+        navigate(redirects, {replace: true})
       })
       .catch((error) => {
         toast.error(error.message);
@@ -93,7 +100,8 @@ const Login = () => {
             <div className="text-center pt-3">
               <p>
                 Don't Have An Account ?{" "}
-                <Link className="text-red-500" to="/auth/register">
+                <Link className="text-red-500" to="/auth/register" 
+                state={{ from: location.state?.from || { pathname: "/" }}}>
                   Register
                 </Link>
               </p>

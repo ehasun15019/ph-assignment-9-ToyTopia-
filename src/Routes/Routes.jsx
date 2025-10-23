@@ -9,6 +9,8 @@ import Register from "../pages/Register/Register";
 import UpdatePassword from "../pages/UpdatePassword/UpdatePassword";
 import MyProfile from "../pages/MyProfile/MyProfile";
 import UpdateProfile from "../pages/UpdateProfile/UpdateProfile";
+import PrivateRoutes from "./PrivateRoute/PrivateRoute";
+import Contact from "../pages/Contact/Contact";
 
 
 export const routes = createBrowserRouter(
@@ -29,7 +31,9 @@ export const routes = createBrowserRouter(
             children: [
                 {
                     path: "productDetails/:id",
-                    element: <ProductDetails></ProductDetails>
+                    element: <PrivateRoutes>
+                        <ProductDetails></ProductDetails>
+                    </PrivateRoutes>
                 }
             ]
         },
@@ -47,17 +51,29 @@ export const routes = createBrowserRouter(
                 },
                 {
                     path: "updatePassword",
-                    element: <UpdatePassword></UpdatePassword>
+                    element: <PrivateRoutes>
+                        <UpdatePassword></UpdatePassword>
+                    </PrivateRoutes>
                 },
                 {
                     path: "myProfile",
-                    element: <MyProfile></MyProfile>
+                    element: <PrivateRoutes>
+                        <MyProfile></MyProfile>
+                    </PrivateRoutes>
                 },
                 {
                     path: "updateProfile",
-                    element: <UpdateProfile></UpdateProfile>
+                    element: <PrivateRoutes>
+                        <UpdateProfile></UpdateProfile>
+                    </PrivateRoutes>
                 }
             ]
+        },
+        {
+            path: "contact",
+            element: <PrivateRoutes>
+                <Contact></Contact>
+            </PrivateRoutes>
         }
     ]
 )
