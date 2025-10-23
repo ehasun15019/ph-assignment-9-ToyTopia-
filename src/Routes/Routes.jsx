@@ -46,6 +46,9 @@ export const routes = createBrowserRouter(
                 {
                     path: "updatePassword",
                     element: <UpdatePassword></UpdatePassword>
+                },
+                {
+                    
                 }
             ]
         }

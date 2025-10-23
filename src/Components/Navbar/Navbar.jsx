@@ -17,7 +17,7 @@ const navLink = (
     <NavLink to="/" className="me-3">
       Contact
     </NavLink>
-    
+
     <NavLink to="/" className="me-3">
       My Profile
     </NavLink>
@@ -26,6 +26,7 @@ const navLink = (
 
 const Navbar = () => {
   const { user, signOutFunction } = use(AuthContext);
+  console.log(user);
 
   const handleSignOut = () => {
     signOutFunction()
@@ -48,14 +49,21 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{navLink}</ul>
       </div>
       <div className="navbar-end ">
-        <div className="pe-3">
+        <div className="relative pe-3 group">
           {user && (
-            <img
-              src={user.photoURL}
-              alt="user image"
-              className="w-10 rounded-full"
-              referrerPolicy="no-referrer"
-            />
+            <>
+              <img
+                src={user.photoURL}
+                alt="user image"
+                className="w-10 h-10 rounded-full cursor-pointer"
+                referrerPolicy="no-referrer"
+              />
+
+              {/* Tooltip: bottom */}
+              <span className="absolute top-full mt-2 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-sm px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                {user.displayName || "No name"}
+              </span>
+            </>
           )}
         </div>
 

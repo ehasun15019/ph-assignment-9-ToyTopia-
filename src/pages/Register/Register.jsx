@@ -4,7 +4,9 @@ import { AuthContext } from "../../Context/AuthContext";
 import { IoEye } from "react-icons/io5";
 import { ImEyeBlocked } from "react-icons/im";
 import { FcGoogle } from "react-icons/fc";
-import { GoogleAuthProvider } from "firebase/auth";
+import { GoogleAuthProvider, updateProfile } from "firebase/auth";
+import { auth } from "../../Firebase/firebase.config";
+import { toast } from "react-toastify";
 
 const Register = () => {
   const { createUser, signInWithGoogle } = use(AuthContext);
@@ -12,8 +14,7 @@ const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [nameError, setNameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
-  const RegexPassword =
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_\-+=\[{\]};:'",<.>/?\\|`~]).{8,}$/;
+  const RegexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_\-+=\[{\]};:'",<.>/?\\|`~]).{6,}$/;
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
@@ -31,21 +32,34 @@ const Register = () => {
 
     if (!RegexPassword.test(password)) {
       setPasswordError(
-        "Password must be at least 8 characters and include at least one lowercase letter, one uppercase letter and one special character."
+        "Password must be at least 6 characters and include at least one lowercase letter, one uppercase letter and one special character."
       );
       return;
     } else {
       setPasswordError("");
     }
 
-    createUser(email, password)
-      .then((newUser) => {
-        console.log(newUser.user);
-        // const user = newUser.user;
-        e.target.reset();
-        alert("Please verify your email address!");
+   createUser(email, password)
+  .then((newUser) => {
+    const user = newUser.user;
+    const name = e.target.name.value;
+    const photoURL = e.target.photo.value;
+
+    updateProfile(user, {
+      displayName: name,
+      photoURL: photoURL,
+    })
+      .then(() => {
+        console.log("Profile updated!");
       })
       .catch((error) => console.log(error));
+
+    e.target.reset();
+    toast.success("You are successfully registered");
+  })
+  .catch((error) => {
+    toast.error(error.massage)
+  });
   };
 
   /* Sign in with Google */
@@ -88,7 +102,7 @@ const Register = () => {
               type="text"
               className="input w-full"
               placeholder="Photo url"
-              name="Photo"
+              name="photo"
               required
             />
 

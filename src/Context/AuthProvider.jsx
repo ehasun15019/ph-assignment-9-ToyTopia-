@@ -19,20 +19,6 @@ const AuthProvider = ({ children }) => {
   const createUser = async (email, password) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password)
-    .then((newUser) => {
-        const verifiedUser = newUser.user;
-
-        sendEmailVerification(verifiedUser)
-          .then(() => {
-            alert("Verification email send! Please check your email");
-          })
-          .catch((error) => {
-            console.error("Error sending verification email:", error);
-          });
-
-        return verifiedUser;
-      }
-    );
   };
 
   /* login functionality start */
