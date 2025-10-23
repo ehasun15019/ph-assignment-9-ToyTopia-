@@ -8,6 +8,7 @@ import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import UpdatePassword from "../pages/UpdatePassword/UpdatePassword";
 import MyProfile from "../pages/MyProfile/MyProfile";
+import UpdateProfile from "../pages/UpdateProfile/UpdateProfile";
 
 
 export const routes = createBrowserRouter(
@@ -52,7 +53,10 @@ export const routes = createBrowserRouter(
                     path: "myProfile",
                     element: <MyProfile></MyProfile>
                 },
-                
+                {
+                    path: "updateProfile",
+                    element: <UpdateProfile></UpdateProfile>
+                }
             ]
         }
     ]

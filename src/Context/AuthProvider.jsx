@@ -8,6 +8,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../Firebase/firebase.config";
 
@@ -49,6 +50,19 @@ const AuthProvider = ({ children }) => {
   }
   /* password reset send in  Email end */
 
+  /* update profile functionality start */
+  const updateProfileFunction = (name, photoURL) => {
+    if(!auth.currentUser) {
+      return
+    }
+
+    return updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: photoURL,
+    })
+  }
+  /* update profile functionality end */
+
 
   /* get Current User functionality start */
   useEffect(() => {
@@ -71,6 +85,7 @@ const AuthProvider = ({ children }) => {
     signOutFunction: signOutFunction,
     loginFunction: loginFunction,
     resetPasswordFunction: resetPasswordFunction,
+    updateProfileFunction: updateProfileFunction
   };
 
   return <AuthContext value={authInfo}>{children}</AuthContext>;

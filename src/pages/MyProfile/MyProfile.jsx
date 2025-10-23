@@ -1,5 +1,7 @@
 import React, { use } from "react";
 import { AuthContext } from "../../Context/AuthContext";
+import { Link } from "react-router";
+import { LiaEdit } from "react-icons/lia";
 
 const MyProfile = () => {
   const { user } = use(AuthContext);
@@ -8,7 +10,7 @@ const MyProfile = () => {
       <div className="card bg-base-100 w-96 shadow-sm">
         <figure className="px-10 pt-10">
           {user && (
-            <img src={user.photoURL} alt="" className="rounded-full w-50" />
+            <img src={user.photoURL} alt="" className="rounded-full w-20 md:w-30 lg:w-50" />
           )}
         </figure>
         <div className="card-body items-center text-center">
@@ -17,7 +19,7 @@ const MyProfile = () => {
           {user && <p>Email: {user.email}</p>}
 
           <div className="card-actions">
-            <button className="btn btn-primary">Buy Now</button>
+            <Link to="/auth/updateProfile" className="btn btn-primary"><LiaEdit size={20} /> Edit Profile</Link>
           </div>
         </div>
       </div>

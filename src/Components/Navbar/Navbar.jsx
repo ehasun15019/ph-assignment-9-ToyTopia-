@@ -3,7 +3,7 @@ import { assets } from "../../assets/assets";
 import { Link, NavLink } from "react-router";
 import { use } from "react";
 import { AuthContext } from "../../Context/AuthContext";
-import "./Navbar.css"
+import "./Navbar.css";
 
 const navLink = (
   <>
@@ -27,7 +27,6 @@ const navLink = (
 
 const Navbar = () => {
   const { user, signOutFunction } = use(AuthContext);
-  console.log(user);
 
   const handleSignOut = () => {
     signOutFunction()
