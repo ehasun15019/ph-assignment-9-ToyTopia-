@@ -1,32 +1,30 @@
 import React from "react";
 import { IoIosStar } from "react-icons/io";
 
-const HomeCardDesign = ({
+const AllCardDesign = ({
   toyName,
   pictureURL,
   price,
   rating,
   availableQuantity,
-  description
+  description,
 }) => {
-
-  const shortDescription = description ? description.split(" ").slice(0, 9).join(" ") + "....." : ""
-
+  const shortDescription = description
+    ? description.split(" ").slice(0, 9).join(" ") + "....."
+    : "";
   return (
     <div>
-      <div className="card w-90 shadow-sm h-[350px] bg-gray-100">
+      <div className="card w-70 shadow-sm h-[350px] bg-gray-100">
         <figure className="py-5">
-          <img
-            src={pictureURL}
-            alt={toyName}
-            className="w-30"
-          />
+          <img src={pictureURL} alt={toyName} className="w-30" />
         </figure>
         <div className="card-body">
           <h2 className="card-title">{toyName}</h2>
 
           <div className="flex justify-between items-center">
-            <p>Price: <span className="text-green-800">{price} $</span></p>
+            <p>
+              Price: <span className="text-green-800">{price} $</span>
+            </p>
             <span>available: {availableQuantity} peace</span>
           </div>
 
@@ -35,7 +33,9 @@ const HomeCardDesign = ({
           </div>
 
           <div className="flex flex-col items-end justify-end">
-            <p><IoIosStar style={{color: "gold"}} /></p>
+            <p>
+              <IoIosStar style={{ color: "gold" }} />
+            </p>
             <p className="text-end">{rating}</p>
           </div>
         </div>
@@ -44,4 +44,4 @@ const HomeCardDesign = ({
   );
 };
 
-export default HomeCardDesign;
+export default AllCardDesign;

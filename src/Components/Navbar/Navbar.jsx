@@ -30,6 +30,7 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">
           <NavLink to="/" className="me-3">Home</NavLink>
           <NavLink to="/contact" className="me-3">Contact</NavLink>
+          <NavLink to="/card/showAllCards" className="me-3">Service</NavLink>
 
           {user && (
             <NavLink to="/auth/myProfile" className="me-3">My Profile</NavLink>
@@ -78,7 +79,8 @@ const Navbar = () => {
           </div>
           <ul className="menu menu-sm dropdown-content bg-base-100 rounded-box z-20 mt-3 w-52 p-2 shadow right-0">
             <NavLink to="/" className="me-3">Home</NavLink>
-            <NavLink to="/contatc" className="me-3">Contact</NavLink>
+             <NavLink to="/contact" className="me-3">Contact</NavLink>
+            <NavLink to="/card/showAllCards" className="me-3">Service</NavLink>
             {user && <NavLink to="/auth/myProfile" className="me-3">My Profile</NavLink>}
           </ul>
         </div>
