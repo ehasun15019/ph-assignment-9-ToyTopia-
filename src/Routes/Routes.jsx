@@ -6,6 +6,7 @@ import ProductDetails from "../pages/ProductDetails/ProductDetails";
 import AuthLayout from "../Layout/AuthLayout/AuthLayout";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import UpdatePassword from "../pages/UpdatePassword/UpdatePassword";
 
 
 export const routes = createBrowserRouter(
@@ -15,7 +16,7 @@ export const routes = createBrowserRouter(
             element: <HomeLayout></HomeLayout>,
             children: [
                 {
-                    path: "/",
+                    index: true,
                     element: <Home></Home>,
                 }
             ]
@@ -41,6 +42,10 @@ export const routes = createBrowserRouter(
                 {
                     path: "register",
                     element: <Register></Register>
+                },
+                {
+                    path: "updatePassword",
+                    element: <UpdatePassword></UpdatePassword>
                 }
             ]
         }

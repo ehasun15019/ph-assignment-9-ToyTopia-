@@ -54,6 +54,7 @@ const Navbar = () => {
               src={user.photoURL}
               alt="user image"
               className="w-10 rounded-full"
+              referrerPolicy="no-referrer"
             />
           )}
         </div>

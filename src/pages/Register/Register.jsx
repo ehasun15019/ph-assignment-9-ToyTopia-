@@ -12,15 +12,16 @@ const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [nameError, setNameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
-  const RegexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_\-+=\[{\]};:'",<.>/?\\|`~]).{8,}$/;
+  const RegexPassword =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_\-+=\[{\]};:'",<.>/?\\|`~]).{8,}$/;
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
 
-    if(name.length <= 5){
-      setNameError("Please give the name minimum 6 characters")
-      return
+    if (name.length <= 5) {
+      setNameError("Please give the name minimum 6 characters");
+      return;
     } else {
       setNameError("");
     }
@@ -28,11 +29,13 @@ const Register = () => {
     const email = e.target.email.value.trim();
     const password = e.target.password.value;
 
-    if(!RegexPassword.test(password)){
-      setPasswordError("Password must be at least 8 characters and include at least one lowercase letter, one uppercase letter and one special character.")
-      return
-    }else {
-      setPasswordError("")
+    if (!RegexPassword.test(password)) {
+      setPasswordError(
+        "Password must be at least 8 characters and include at least one lowercase letter, one uppercase letter and one special character."
+      );
+      return;
+    } else {
+      setPasswordError("");
     }
 
     createUser(email, password)
@@ -77,9 +80,7 @@ const Register = () => {
               required
             />
 
-            {
-              nameError && <p className="text-red-500">{nameError}</p>
-            }
+            {nameError && <p className="text-red-500">{nameError}</p>}
 
             {/* Photo Url */}
             <label className="label mt-2">Photo Url</label>
@@ -119,7 +120,9 @@ const Register = () => {
               </div>
             </div>
 
-            {passwordError && <p className="text-red-500 text-sm mb-2">{passwordError}</p>}
+            {passwordError && (
+              <p className="text-red-500 text-sm mb-2">{passwordError}</p>
+            )}
 
             <div className="text-center pt-3">
               <p>
@@ -134,16 +137,16 @@ const Register = () => {
               Register
             </button>
           </fieldset>
-
-          {/* google sign in */}
-          <button
-            type="button"
-            className="btn mt-1 text-black bg-white border border-[#e5e5e5] w-full hover:bg-gray-200 flex items-center justify-center gap-2"
-            onClick={handleGoogleSignIn}
-          >
-            <FcGoogle size={20} /> Sign in with Google
-          </button>
         </form>
+
+        {/* google sign in */}
+        <button
+          type="button"
+          className="btn mt-1 text-black bg-white border border-[#e5e5e5] w-full hover:bg-gray-200 flex items-center justify-center gap-2"
+          onClick={handleGoogleSignIn}
+        >
+          <FcGoogle size={20} /> Sign in with Google
+        </button>
       </div>
     </div>
   );

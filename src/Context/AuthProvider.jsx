@@ -4,6 +4,8 @@ import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   sendEmailVerification,
+  sendPasswordResetEmail,
+  signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
 } from "firebase/auth";
@@ -33,6 +35,13 @@ const AuthProvider = ({ children }) => {
     );
   };
 
+  /* login functionality start */
+  const loginFunction = (email, password) => {
+    setLoading(true)
+    return signInWithEmailAndPassword(auth, email, password)
+  }
+  /* login functionality end */
+
   /* SignIn with Google Functionality start */
   const signInWithGoogle = (provider) => {
     setLoading(true);
@@ -43,15 +52,23 @@ const AuthProvider = ({ children }) => {
 
   /* Sign Out Functionality start */
   const signOutFunction = () => {
+    setLoading(true);
     return signOut(auth)
   }
   /* Sign Out Functionality end */
+
+  /* password reset send in  Email start */
+  const resetPasswordFunction = (email) => {
+    return sendPasswordResetEmail(auth, email)
+  }
+  /* password reset send in  Email end */
 
 
   /* get Current User functionality start */
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-      console.log("in the auth", currentUser), setUser(currentUser);
+      // console.log("in the auth", currentUser), 
+      setUser(currentUser);
       setLoading(false);
     });
     return () => {
@@ -65,7 +82,9 @@ const AuthProvider = ({ children }) => {
     loading,
     createUser: createUser,
     signInWithGoogle: signInWithGoogle,
-    signOutFunction: signOutFunction
+    signOutFunction: signOutFunction,
+    loginFunction: loginFunction,
+    resetPasswordFunction: resetPasswordFunction,
   };
 
   return <AuthContext value={authInfo}>{children}</AuthContext>;
