@@ -9,12 +9,15 @@ const navLink = (
     <NavLink to="/" className="me-3">
       Home
     </NavLink>
+
     <NavLink to="/" className="me-3">
       Blog
     </NavLink>
+
     <NavLink to="/" className="me-3">
       Contact
     </NavLink>
+    
     <NavLink to="/" className="me-3">
       My Profile
     </NavLink>
@@ -22,8 +25,17 @@ const navLink = (
 );
 
 const Navbar = () => {
+  const { user, signOutFunction } = use(AuthContext);
 
-  const {user} = use(AuthContext);
+  const handleSignOut = () => {
+    signOutFunction()
+      .then(() => {
+        alert("sign out successfully");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <div className="navbar mt-10 px-3 md:px-8 lg:px-10">
@@ -37,17 +49,31 @@ const Navbar = () => {
       </div>
       <div className="navbar-end ">
         <div className="pe-3">
-          {
-            user && <img src={user.photoURL} alt="user image" className="w-10 rounded-full" />
-          }
+          {user && (
+            <img
+              src={user.photoURL}
+              alt="user image"
+              className="w-10 rounded-full"
+            />
+          )}
         </div>
 
-        {
-          user ? 
-          <Link to="/auth/login" className="btn bg-[#0F83B2] text-white rounded-full px-6">Log Out</Link>
-          :
-          <Link to="/auth/login" className="btn bg-[#0F83B2] text-white rounded-full px-6">Login</Link>
-        }
+        {user ? (
+          <button
+            to="/auth/login"
+            className="btn bg-[#0F83B2] text-white rounded-full px-6"
+            onClick={handleSignOut}
+          >
+            Log Out
+          </button>
+        ) : (
+          <Link
+            to="/auth/login"
+            className="btn bg-[#0F83B2] text-white rounded-full px-6"
+          >
+            Login
+          </Link>
+        )}
 
         {/* mobile dropdown */}
         <div className="dropdown relative">

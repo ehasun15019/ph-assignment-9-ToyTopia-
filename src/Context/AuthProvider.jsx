@@ -5,6 +5,7 @@ import {
   onAuthStateChanged,
   sendEmailVerification,
   signInWithPopup,
+  signOut,
 } from "firebase/auth";
 import { auth } from "../Firebase/firebase.config";
 
@@ -15,8 +16,8 @@ const AuthProvider = ({ children }) => {
   // create a user functionality
   const createUser = async (email, password) => {
     setLoading(true);
-    return createUserWithEmailAndPassword(auth, email, password).then(
-      (newUser) => {
+    return createUserWithEmailAndPassword(auth, email, password)
+    .then((newUser) => {
         const verifiedUser = newUser.user;
 
         sendEmailVerification(verifiedUser)
@@ -39,6 +40,14 @@ const AuthProvider = ({ children }) => {
   };
   /* SignIn with Google Functionality end */
 
+
+  /* Sign Out Functionality start */
+  const signOutFunction = () => {
+    return signOut(auth)
+  }
+  /* Sign Out Functionality end */
+
+
   /* get Current User functionality start */
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -56,6 +65,7 @@ const AuthProvider = ({ children }) => {
     loading,
     createUser: createUser,
     signInWithGoogle: signInWithGoogle,
+    signOutFunction: signOutFunction
   };
 
   return <AuthContext value={authInfo}>{children}</AuthContext>;
