@@ -3,6 +3,7 @@ import { assets } from "../../assets/assets";
 import { Link, NavLink } from "react-router";
 import { use } from "react";
 import { AuthContext } from "../../Context/AuthContext";
+import "./Navbar.css"
 
 const navLink = (
   <>
@@ -18,7 +19,7 @@ const navLink = (
       Contact
     </NavLink>
 
-    <NavLink to="/" className="me-3">
+    <NavLink to="/auth/myProfile" className="me-3">
       My Profile
     </NavLink>
   </>
@@ -52,12 +53,14 @@ const Navbar = () => {
         <div className="relative pe-3 group">
           {user && (
             <>
-              <img
-                src={user.photoURL}
-                alt="user image"
-                className="w-10 h-10 rounded-full cursor-pointer"
-                referrerPolicy="no-referrer"
-              />
+              <Link to="/auth/myProfile">
+                <img
+                  src={user.photoURL}
+                  alt="user image"
+                  className="w-10 h-10 rounded-full cursor-pointer"
+                  referrerPolicy="no-referrer"
+                />
+              </Link>
 
               {/* Tooltip: bottom */}
               <span className="absolute top-full mt-2 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-sm px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
