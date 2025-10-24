@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import ProductRightCardDesign from "../CardDesign/ProductDetailsCardDesign.jsx/ProductRightCardDesign";
+import TryNow from "../TryNow/TryNow";
 
 const ProductDetailsRightSide = () => {
   const [productDetails, setProductDetails] = useState(null);
@@ -30,14 +31,20 @@ const ProductDetailsRightSide = () => {
 
   return (
     <div>
-      <ProductRightCardDesign 
-        key={productDetails.toyId}
-        toyName={productDetails.toyName}
-        price={productDetails.price}
-        rating={productDetails.rating}
-        availableQuantity={productDetails.availableQuantity}
-        subCategory={productDetails.subCategory}
-      />
+      <div>
+        <ProductRightCardDesign
+          key={productDetails.toyId}
+          toyName={productDetails.toyName}
+          price={productDetails.price}
+          rating={productDetails.rating}
+          availableQuantity={productDetails.availableQuantity}
+          subCategory={productDetails.subCategory}
+        />
+      </div>
+
+      <div className="my-5 mt-10">
+        <TryNow></TryNow>
+      </div>
     </div>
   );
 };
