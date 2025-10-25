@@ -10,7 +10,11 @@ const MyProfile = () => {
       <div className="card bg-base-100 w-96 shadow-sm">
         <figure className="px-10 pt-10">
           {user && (
-            <img src={user.photoURL} alt="" className="rounded-full w-20 md:w-30 lg:w-50" />
+            <img
+              src={user.photoURL}
+              alt=""
+              className="rounded-full w-20 md:w-30 lg:w-50"
+            />
           )}
         </figure>
         <div className="card-body items-center text-center">
@@ -19,7 +23,15 @@ const MyProfile = () => {
           {user && <p>Email: {user.email}</p>}
 
           <div className="card-actions">
-            <Link to="/auth/updateProfile" className="btn btn-primary"><LiaEdit size={20} /> Edit Profile</Link>
+            <Link to="/auth/updateProfile" className="btn btn-primary">
+              <LiaEdit size={20} /> Edit Profile
+            </Link>
+          </div>
+
+          <div className="flex justify-center items-center">
+            <Link to="/auth/login" className="text-blue-600">
+              Back to Login
+            </Link>
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import React, { use } from "react";
 import { AuthContext } from "../../Context/AuthContext";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 
 const UpdateProfile = () => {

@@ -12,8 +12,9 @@ import UpdateProfile from "../pages/UpdateProfile/UpdateProfile";
 import PrivateRoutes from "./PrivateRoute/PrivateRoute";
 import Contact from "../pages/Contact/Contact";
 import ShowAllCardLayout from "../Layout/ShowAllCardLayout/ShowAllCardLayout";
-import ShowAllCard from "../pages/ShowAllCards/ShowAllCard";
+// import ShowAllCard from "../pages/ShowAllCards/ShowAllCard";
 import ShowAllCards from "../Components/ShowAllCards/ShowAllCards";
+import Error from "../Components/Error/Error";
 
 
 export const routes = createBrowserRouter(
@@ -21,6 +22,7 @@ export const routes = createBrowserRouter(
         {
             path: '/',
             element: <HomeLayout></HomeLayout>,
+            errorElement: <Error></Error>,
             children: [
                 {
                     index: true,
