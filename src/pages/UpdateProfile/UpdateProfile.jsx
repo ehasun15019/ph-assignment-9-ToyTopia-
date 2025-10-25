@@ -15,7 +15,7 @@ const UpdateProfile = () => {
 
     updateProfileFunction(name, photo)
       .then(() => {
-        setUser(user)
+        setUser({ ...user, displayName: name, photoURL: photo });
         toast.success("Profile updated successfully!");
         navigate("/auth/myProfile");
       })
